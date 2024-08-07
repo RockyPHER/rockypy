@@ -1,11 +1,14 @@
-import discord
+import nextcord
 import os
+
+from commands.hello import hello
+from commands.pong import pong
 from dotenv import load_dotenv
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(intents=intents)
+client = nextcord.Client(intents=intents)
 
 @client.event
 async def on_ready():
@@ -17,7 +20,10 @@ async def on_message(message):
         return
 
     if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+       await hello(message)
+       
+    if message.content.startswith('$ping'):
+       await pong(message)
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')

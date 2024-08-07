@@ -7,10 +7,10 @@ name = "pypi"
 dev = "python main.py"
 
 [packages]
-"discord.py" = "*"
 python-dotenv = "*"
 google-generativeai = "*"
 ipython = "*"
+nextcord = "*"
 
 [dev-packages]
 
